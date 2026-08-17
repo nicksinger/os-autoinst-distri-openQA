@@ -15,10 +15,8 @@ sub run {
     # /etc/zypp/zypp.conf so we need to refresh explicitly with retries in
     # case of problems.
     install_packages('os-autoinst-distri-opensuse-deps');
+    # leave clean root console for subsequent test (if the next module needs x11 it can switch itself)
     clear_root_console;
-    # prepare for next test
-    enter_cmd 'logout';
-    select_console 'x11';
 }
 
 1;
