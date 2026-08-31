@@ -11,11 +11,10 @@ sub run {
         save_screenshot;
     }
     # os-autoinst-distri-opensuse is changing quickly so it is likely to have
-    # changes within the 10 minutes refresh dead-time applied by default in
-    # /etc/zypp/zypp.conf so we need to refresh explicitly with retries in
-    # case of problems.
+    # changed within the 10 minute default refresh deadline of zypper.
+    # Therefore we try to refresh explicitly (with retries, in case of problems).
     install_packages('os-autoinst-distri-opensuse-deps');
-    # leave clean root console for subsequent test (if the next module needs x11 it can switch itself)
+    # leave a clean root console for the subsequent test module (if it needs x11, it should switch itself)
     clear_root_console;
 }
 
